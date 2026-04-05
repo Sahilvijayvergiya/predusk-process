@@ -2,7 +2,6 @@ from celery import Task
 from app.workers.celery_app import celery_app
 from app.core.database import SessionLocal
 from app.models.document import ProcessingJob, JobStatus
-from app.services.job_service import JobService
 from datetime import datetime
 import os
 import mimetypes
@@ -25,6 +24,7 @@ class DatabaseTask(Task):
 @celery_app.task(bind=True, base=DatabaseTask)
 def process_document(self, job_id: int):
     """Process a document asynchronously with progress tracking"""
+    from app.services.job_service import JobService
     job_service = JobService(self.db)
     
     try:
