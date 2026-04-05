@@ -1,4 +1,6 @@
 const API_BASE_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1').replace(/\/$/, '');
+console.log('NEXT_PUBLIC_API_URL:', process.env.NEXT_PUBLIC_API_URL); // Debug log
+console.log('API_BASE_URL:', API_BASE_URL); // Debug log
 
 export interface ProcessingJob {
   id: number;
@@ -67,7 +69,11 @@ class ApiClient {
     const formData = new FormData();
     formData.append('file', file);
 
-    const response = await fetch(`${this.baseUrl}/documents/upload`, {
+    const uploadUrl = `${this.baseUrl}/documents/upload`;
+    console.log('Uploading to:', uploadUrl); // Debug log
+    console.log('Base URL:', this.baseUrl); // Debug log
+
+    const response = await fetch(uploadUrl, {
       method: 'POST',
       body: formData,
     });
