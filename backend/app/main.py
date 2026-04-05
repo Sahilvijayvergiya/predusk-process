@@ -35,7 +35,11 @@ app = FastAPI(
 )
 
 # Configure CORS for production (Render)
-allowed_origins = ["*"] 
+# Configure CORS for production (Render)
+allowed_origins = [
+    "http://localhost:3000",
+    "https://predusk-process-1.onrender.com"  # Frontend URL
+] 
 
 app.add_middleware(
     CORSMiddleware,
