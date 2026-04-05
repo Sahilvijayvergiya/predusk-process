@@ -4,7 +4,6 @@ from app.models.document import ProcessingJob, JobStatus, Document
 from app.schemas.document import ProcessingJobUpdate
 from typing import List, Optional
 from datetime import datetime
-from app.workers.document_processor import process_document
 from app.core.redis_client import redis_client
 import json
 
@@ -78,6 +77,7 @@ class JobService:
         self.db.commit()
         
         # Queue new processing task
+        from app.workers.document_processor import process_document
         task = process_document.delay(job.id)
         job.celery_task_id = task.id
         
