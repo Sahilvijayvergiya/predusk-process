@@ -24,7 +24,7 @@ class DocumentResponse(BaseModel):
     upload_time: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class ProcessingJobCreate(BaseModel):
@@ -67,7 +67,7 @@ class ProcessingJobResponse(BaseModel):
     celery_task_id: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class ProgressEvent(BaseModel):
