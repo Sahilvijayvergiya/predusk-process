@@ -1,0 +1,18 @@
+This is a sample document for testing the document processing system.
+
+The system should be able to extract metadata such as:
+- Document title
+- Category classification
+- Summary of content
+- Relevant keywords
+
+This sample text contains various terms that could be used for keyword extraction:
+analysis, report, data, system, process, management, development, research.
+
+The document processing workflow includes multiple stages:
+1. Document parsing and content extraction
+2. Field extraction using simulated AI processing
+3. Storage of structured results
+4. Review and finalization by users
+
+This demonstrates the complete asynchronous processing pipeline with real-time progress tracking.
