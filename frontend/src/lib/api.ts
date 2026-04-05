@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001/api/v1';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
 
 export interface ProcessingJob {
   id: number;
@@ -147,7 +147,9 @@ class ApiClient {
 
   // WebSocket connection for progress tracking
   createProgressWebSocket(jobId: number): WebSocket {
-    const wsUrl = `ws://localhost:8000/api/v1/ws/progress/${jobId}`;
+    // Convert HTTP URL to WebSocket URL
+    const wsBaseUrl = API_BASE_URL.replace(/^http/, 'ws');
+    const wsUrl = `${wsBaseUrl}/ws/progress/${jobId}`;
     return new WebSocket(wsUrl);
   }
 }
