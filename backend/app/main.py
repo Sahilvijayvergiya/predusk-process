@@ -35,10 +35,7 @@ app = FastAPI(
 )
 
 # Configure CORS for production (Render)
-allowed_origins = [
-    "http://localhost:3000",  # Development
-    os.getenv("FRONTEND_URL", "https://your-frontend-domain.onrender.com")  # Production
-]
+allowed_origins = ["*"] 
 
 app.add_middleware(
     CORSMiddleware,
