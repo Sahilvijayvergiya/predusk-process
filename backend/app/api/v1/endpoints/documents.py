@@ -8,7 +8,7 @@ from datetime import datetime
 
 from app.core.database import get_db
 from app.models.document import Document, ProcessingJob
-from app.schemas.simple_document import DocumentResponse, ProcessingJobResponse
+from app.schemas.document import DocumentResponse, ProcessingJobResponse
 from app.core.config import settings
 from app.services.document_service import DocumentService
 from app.workers.document_processor import process_document
